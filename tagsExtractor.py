@@ -2,6 +2,9 @@ import yt_dlp
 import datetime
 from os import chdir, system, listdir
 import json
+import sys
+
+link = sys.argv[1]
 
 folderName = str(datetime.datetime.today()).replace(" ", "")
 system(f"mkdir {folderName}")
@@ -16,7 +19,7 @@ ydl_opts = {"skip_download": True,
  }
 
 with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-    ydl.download(['https://www.youtube.com/watch?v=qvFG8J7SUDE'])
+    ydl.download([link])
 
 for file in listdir():
     if file.endswith(".json"):
